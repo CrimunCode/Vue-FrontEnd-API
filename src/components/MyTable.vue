@@ -1,5 +1,4 @@
 <template>
-    {{ productos }}
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -9,7 +8,7 @@
         </thead>
         <tbody>
             
-        <tr v-for="prod in productos" v-bind:key="prod.Id_prod">
+        <tr v-for="(prod, key) in posts" :key="key">
             <td>{{ prod.Id_prod }}</td>
             <td>{{ prod.Nom_prod }}</td>
         </tr>
@@ -19,20 +18,19 @@
 </template>
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
 
 export default {
   name: "MyTable",
-  props: {},
-  data() {
-    return {
-        productos: null
-    }
+  props: {
+    posts: Array
   },
+  /**
   async mounted(){
     await axios.get('http://localhost:3000/listarProd').then(response => (this.productos = response.data))
     console.log(this.productos)
   },
+  **/
   computed: {},
   methods: {
 
